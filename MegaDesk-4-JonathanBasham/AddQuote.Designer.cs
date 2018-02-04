@@ -1,4 +1,4 @@
-﻿namespace MegaDesk_3_JonathanBasham
+﻿namespace MegaDesk_4_JonathanBasham
 {
     partial class AddQuote
     {
@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cancelQuoteButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.customerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.depth = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numOfDrawers = new System.Windows.Forms.NumericUpDown();
+            this.txtDepth = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.surfMaterial = new System.Windows.Forms.ComboBox();
@@ -43,8 +42,10 @@
             this.rushDays = new System.Windows.Forms.ComboBox();
             this.addDisplayQuoteButton = new System.Windows.Forms.Button();
             this.errorMessage = new System.Windows.Forms.Label();
-            this.validWidth = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numOfDrawers)).BeginInit();
+            this.txtWidth = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtDrawers = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // cancelQuoteButton
@@ -103,34 +104,14 @@
             this.label3.Text = "Depth:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // depth
+            // txtDepth
             // 
-            this.depth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depth.Location = new System.Drawing.Point(170, 115);
-            this.depth.Name = "depth";
-            this.depth.Size = new System.Drawing.Size(202, 26);
-            this.depth.TabIndex = 6;
-            this.depth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.depth_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 23);
-            this.label4.TabIndex = 9;
-            // 
-            // numOfDrawers
-            // 
-            this.numOfDrawers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numOfDrawers.Location = new System.Drawing.Point(170, 156);
-            this.numOfDrawers.Maximum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.numOfDrawers.Name = "numOfDrawers";
-            this.numOfDrawers.Size = new System.Drawing.Size(202, 26);
-            this.numOfDrawers.TabIndex = 8;
+            this.txtDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDepth.Location = new System.Drawing.Point(170, 115);
+            this.txtDepth.Name = "txtDepth";
+            this.txtDepth.Size = new System.Drawing.Size(202, 26);
+            this.txtDepth.TabIndex = 6;
+            this.txtDepth.Validating += new System.ComponentModel.CancelEventHandler(this.txtDepth_Validating);
             // 
             // label5
             // 
@@ -178,6 +159,11 @@
             // 
             this.rushDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rushDays.FormattingEnabled = true;
+            this.rushDays.Items.AddRange(new object[] {
+            "0",
+            "3",
+            "5",
+            "7"});
             this.rushDays.Location = new System.Drawing.Point(171, 236);
             this.rushDays.Name = "rushDays";
             this.rushDays.Size = new System.Drawing.Size(201, 28);
@@ -207,21 +193,43 @@
             this.errorMessage.Size = new System.Drawing.Size(0, 20);
             this.errorMessage.TabIndex = 16;
             // 
-            // validWidth
+            // txtWidth
             // 
-            this.validWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.validWidth.Location = new System.Drawing.Point(170, 76);
-            this.validWidth.Name = "validWidth";
-            this.validWidth.Size = new System.Drawing.Size(202, 26);
-            this.validWidth.TabIndex = 17;
-            this.validWidth.TextChanged += new System.EventHandler(this.validWidth_TextChanged);
+            this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWidth.Location = new System.Drawing.Point(170, 76);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Size = new System.Drawing.Size(202, 26);
+            this.txtWidth.TabIndex = 17;
+            this.txtWidth.Validating += new System.ComponentModel.CancelEventHandler(this.txtWidth_Validating);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // txtDrawers
+            // 
+            this.txtDrawers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDrawers.FormattingEnabled = true;
+            this.txtDrawers.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.txtDrawers.Location = new System.Drawing.Point(171, 156);
+            this.txtDrawers.Name = "txtDrawers";
+            this.txtDrawers.Size = new System.Drawing.Size(201, 28);
+            this.txtDrawers.TabIndex = 18;
             // 
             // AddQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 362);
-            this.Controls.Add(this.validWidth);
+            this.ClientSize = new System.Drawing.Size(404, 362);
+            this.ControlBox = false;
+            this.Controls.Add(this.txtDrawers);
+            this.Controls.Add(this.txtWidth);
             this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.addDisplayQuoteButton);
             this.Controls.Add(this.rushDays);
@@ -229,9 +237,7 @@
             this.Controls.Add(this.surfMaterial);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.numOfDrawers);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.depth);
+            this.Controls.Add(this.txtDepth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.customerName);
@@ -240,7 +246,7 @@
             this.Name = "AddQuote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddQuote";
-            ((System.ComponentModel.ISupportInitialize)(this.numOfDrawers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,9 +259,7 @@
         private System.Windows.Forms.TextBox customerName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox depth;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numOfDrawers;
+        private System.Windows.Forms.TextBox txtDepth;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox surfMaterial;
@@ -263,6 +267,8 @@
         private System.Windows.Forms.ComboBox rushDays;
         private System.Windows.Forms.Button addDisplayQuoteButton;
         private System.Windows.Forms.Label errorMessage;
-        private System.Windows.Forms.TextBox validWidth;
+        private System.Windows.Forms.TextBox txtWidth;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox txtDrawers;
     }
 }

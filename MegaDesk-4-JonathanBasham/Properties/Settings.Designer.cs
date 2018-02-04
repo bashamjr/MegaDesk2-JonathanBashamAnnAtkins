@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MegaDesk_3_JonathanBasham.Properties
+namespace MegaDesk_4_JonathanBasham.Properties
 {
 
 

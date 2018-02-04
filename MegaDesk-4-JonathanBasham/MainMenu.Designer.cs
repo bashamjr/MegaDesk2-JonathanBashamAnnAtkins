@@ -1,4 +1,4 @@
-﻿namespace MegaDesk_3_JonathanBasham
+﻿namespace MegaDesk_4_JonathanBasham
 {
     partial class MainMenu
     {
@@ -32,6 +32,7 @@
             this.openViewAllQuotes = new System.Windows.Forms.Button();
             this.openSearchQuote = new System.Windows.Forms.Button();
             this.openExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openAddQuote
@@ -94,11 +95,22 @@
             this.openExit.UseVisualStyleBackColor = false;
             this.openExit.Click += new System.EventHandler(this.openExit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(247, 31);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Mega Desk Quote";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 362);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.openExit);
             this.Controls.Add(this.openSearchQuote);
             this.Controls.Add(this.openViewAllQuotes);
@@ -118,6 +130,7 @@
         private System.Windows.Forms.Button openViewAllQuotes;
         private System.Windows.Forms.Button openSearchQuote;
         private System.Windows.Forms.Button openExit;
+        private System.Windows.Forms.Label label1;
     }
 }
 
