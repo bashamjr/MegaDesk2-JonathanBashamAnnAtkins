@@ -67,7 +67,7 @@ namespace MegaDesk_4_JonathanBasham
 
             try
             {
-                string DeskRecord = DateTime.Now.Date + ", " + CustomerName + ", " + DeskWidth + ", " + DeskDepth + ", " + Drawers + ", " + SurfaceMaterial + ", " + RushOrderDays + ", ";
+                string DeskRecord = DateTime.Now.Date + ", " + CustomerName + ", " + DeskWidth + ", " + DeskDepth + ", " + Drawers + ", " + SurfaceMaterial + ", " + RushOrderDays + ", " + DeskQuoteTotal + ", ";
                 
                 string txtFile = @"quotes.txt";
                 if (!File.Exists(txtFile))

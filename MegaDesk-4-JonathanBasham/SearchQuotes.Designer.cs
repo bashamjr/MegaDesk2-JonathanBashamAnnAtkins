@@ -40,6 +40,7 @@
             this.DrawersHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MaterialHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RushHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.QuoteTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cancelSearchQuoteButton
@@ -95,7 +96,8 @@
             this.DepthHeader,
             this.DrawersHeader,
             this.MaterialHeader,
-            this.RushHeader});
+            this.RushHeader,
+            this.QuoteTotal});
             this.listView.GridLines = true;
             this.listView.Location = new System.Drawing.Point(33, 66);
             this.listView.Name = "listView";
@@ -137,6 +139,10 @@
             this.RushHeader.Text = "Rush Order Days";
             this.RushHeader.Width = 108;
             // 
+            // QuoteTotal
+            // 
+            this.QuoteTotal.Text = "Quote Total";
+            // 
             // SearchQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,5 +175,6 @@
         private System.Windows.Forms.ColumnHeader DrawersHeader;
         private System.Windows.Forms.ColumnHeader MaterialHeader;
         private System.Windows.Forms.ColumnHeader RushHeader;
+        private System.Windows.Forms.ColumnHeader QuoteTotal;
     }
 }

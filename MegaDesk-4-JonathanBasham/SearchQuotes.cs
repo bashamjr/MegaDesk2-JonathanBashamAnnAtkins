@@ -31,6 +31,7 @@ namespace MegaDesk_4_JonathanBasham
             lv.SubItems.Add(fileItems[4].ToString());
             lv.SubItems.Add(fileItems[5].ToString());
             lv.SubItems.Add(fileItems[6].ToString());
+            lv.SubItems.Add(fileItems[7].ToString());
             listView.Items.Add(lv);
 
         }
