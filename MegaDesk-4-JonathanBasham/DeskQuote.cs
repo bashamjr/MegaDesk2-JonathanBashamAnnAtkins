@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,8 +49,8 @@ namespace MegaDesk_4_JonathanBasham
         }
 
         public int CalculateQuoteTotal()
-        {
-            return PRICE_BASE + SurfaceAreaCost() + DrawerCost() + SurfaceMaterialCost() + RushOrderCost();
+        {         
+            return PRICE_BASE + SurfaceAreaCost() + DrawerCost() + SurfaceMaterialCost() + GetRushOrder();
         }
 
         private int SurfaceAreaCost()
@@ -75,26 +76,94 @@ namespace MegaDesk_4_JonathanBasham
             int materialCost = 0;
             switch (Desk.surfMaterial)
             {
-                case "laminate":
-                    materialCost = 100;
-                    break;
-                case "oak":
-                    materialCost = 200;
-                    break;
-                case "pine":
-                    materialCost = 50;
-                    break;
-                case "veneer":
-                    materialCost = 125;
-                    break;
-                case "rosewood":
-                    materialCost = 300;
-                    break;
-                default:
-                    materialCost = -1; // error flag
-                    break;
-            }
+                 case "Laminate":
+                     materialCost = 100;
+                     break;
+                 case "Oak":
+                     materialCost = 200;
+                     break;
+                 case "Pine":
+                     materialCost = 50;
+                     break;
+                 case "Veneer":
+                     materialCost = 125;
+                     break;
+                 case "Rosewood":
+                     materialCost = 300;
+                     break;
+                 default:
+                     materialCost = -1; // error flag
+                     break;
+             }
             return materialCost;
+        }
+
+        private int GetRushOrder()
+        {
+            int rushCost = 0;
+            string path = @"C:\Users\Jonathan.Basham\source\repos\MegaDesk-4-JonathanBasham\MegaDesk-4-JonathanBasham\bin\Debug\rushOrderPrices.txt";
+            try
+            {
+                int x = 0;
+                int y = 0;
+                int[,] fileItems = new int[3, 3];
+                string[] lines = File.ReadAllLines(path);
+                foreach (string line in lines)
+                {
+                    fileItems[x, y] = int.Parse(line);
+                    if (y < 2) { y++; }
+                    else { y = 0; x++; }
+                }
+
+                if (RushDays == RUSH1)
+                {
+                    if (SurfaceArea < SIZE_THRESHOLD)
+                    {
+                        rushCost = fileItems[0, 0];
+                    }
+                    else if (SurfaceArea <= RUSH_THRESHOLD)
+                    {
+                        rushCost = fileItems[1, 0];
+                    }
+                    else
+                    {
+                        rushCost = fileItems[2, 0];
+                    }
+                }
+                if (RushDays == RUSH2)
+                {
+                    if (SurfaceArea < SIZE_THRESHOLD)
+                    {
+                        rushCost = fileItems[0, 1];
+                    }
+                    else if (SurfaceArea <= RUSH_THRESHOLD)
+                    {
+                        rushCost = fileItems[1, 1];
+                    }
+                    else
+                    {
+                        rushCost = fileItems[2, 1];
+                    }
+                }
+                if (RushDays == RUSH3)
+                {
+                    if (SurfaceArea < SIZE_THRESHOLD)
+                    {
+                        rushCost = fileItems[0, 2];
+                    }
+                    else if (SurfaceArea <= RUSH_THRESHOLD)
+                    {
+                        rushCost = fileItems[1, 2];
+                    }
+                    else
+                    {
+                        rushCost = fileItems[2, 2];
+                    }
+                }
+
+            }
+            catch (Exception e) { }
+            return rushCost; 
         }
 
         private int RushOrderCost()

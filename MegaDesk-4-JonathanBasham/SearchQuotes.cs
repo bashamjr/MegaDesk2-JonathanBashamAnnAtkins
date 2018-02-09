@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.IO;
+
 
 namespace MegaDesk_4_JonathanBasham
 {
@@ -18,21 +19,40 @@ namespace MegaDesk_4_JonathanBasham
             InitializeComponent();
             surfMaterialComboBox.DataSource = Enum.GetValues(typeof(Desk.DeskMaterials));
 
-            StreamReader sr = new StreamReader(path);
-            string fileContent = sr.ReadToEnd();
-            string[] fileItems = fileContent.Split(',');
-            sr.Dispose();
+            DataTable dt = new DataTable();
+            string[] lines = File.ReadAllLines(path);
+            if (lines.Length > 0)
+            {
+                // first line to create header
+                string firstLine = lines[0];
+                string[] headerLabels = firstLine.Split(',');
+                foreach (string headerWord in headerLabels)
+                {
+                    dt.Columns.Add(new DataColumn(headerWord));
+                }
 
-            ListViewItem lv = new ListViewItem();
-            lv.Text = fileItems[0].ToString();
-            lv.SubItems.Add(fileItems[1].ToString());
-            lv.SubItems.Add(fileItems[2].ToString());
-            lv.SubItems.Add(fileItems[3].ToString());
-            lv.SubItems.Add(fileItems[4].ToString());
-            lv.SubItems.Add(fileItems[5].ToString());
-            lv.SubItems.Add(fileItems[6].ToString());
-            lv.SubItems.Add(fileItems[7].ToString());
-            listView.Items.Add(lv);
+                //for data
+
+                for (int r = 1; r < lines.Length; r++)
+                {
+                    string[] dataWords = lines[r].Split(',');
+                    DataRow dr = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+                    }
+                    dt.Rows.Add(dr);
+                }
+
+            }
+
+            if (dt.Rows.Count > 0)
+            {
+                dgvQuotes.DataSource = dt;
+            }
+
+
 
         }
 
@@ -49,14 +69,53 @@ namespace MegaDesk_4_JonathanBasham
         {
             try
             {
-               
-                SurfaceMaterial = surfMaterialComboBox.SelectedItem.ToString();
-                listView.Sort();
+
+  
+            string sortOption;
+                if (dgvQuotes.Rows.Count != 0) // prevents user from sorting before datagridview is filled.
+                {
+                    sortOption = surfMaterialComboBox.Text;
+                    
+                    switch (sortOption)
+                    {
+                        case "Oak":
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                        case "Pine":
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                        case "Laminate":
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                        case "Rosewood":
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                        case "Veneer":
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                       default:
+                            dgvQuotes.Sort(dgvQuotes.Columns[5],
+                            ListSortDirection.Descending);
+                            break;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Check input values");
             }
         }
+
+        private void surfMaterialComboBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

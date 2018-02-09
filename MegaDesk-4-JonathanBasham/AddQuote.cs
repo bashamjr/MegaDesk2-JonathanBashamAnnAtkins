@@ -20,13 +20,13 @@ namespace MegaDesk_4_JonathanBasham
             surfMaterial.DataSource = Enum.GetValues(typeof(Desk.DeskMaterials));
         }
 
-        private int DeskWidth;
-        private int DeskDepth;
-        private string CustomerName;
-        private int Drawers;
-        private string SurfaceMaterial;
-        private int RushOrderDays;
-        private int DeskQuoteTotal;
+        public int DeskWidth;
+        public int DeskDepth;
+        public string CustomerName;
+        public int Drawers;
+        public string SurfaceMaterial;
+        public int RushOrderDays;
+        public int DeskQuoteTotal;
 
         private void cancelQuoteButton_Click(object sender, EventArgs e)
         {
@@ -67,14 +67,14 @@ namespace MegaDesk_4_JonathanBasham
 
             try
             {
-                string DeskRecord = DateTime.Now.Date + ", " + CustomerName + ", " + DeskWidth + ", " + DeskDepth + ", " + Drawers + ", " + SurfaceMaterial + ", " + RushOrderDays + ", " + DeskQuoteTotal + ", ";
+                string DeskRecord = DateTime.Now.Date + ", " + CustomerName + ", " + DeskWidth + ", " + DeskDepth + ", " + Drawers + ", " + SurfaceMaterial + ", " + RushOrderDays + ", " + DeskQuoteTotal;
                 
                 string txtFile = @"quotes.txt";
                 if (!File.Exists(txtFile))
                 {
                     using (StreamWriter sw = File.CreateText("quotes.txt"))
                     {
-                       // sw.WriteLine("MegaDesk Quote Orders");
+                       sw.WriteLine("Quote Date, Customer Name, Desk Width, Desk Depth, Number of Drawers, Material, Rush Order Days, Desk Quote Total");
                     }
                 }
                 using (StreamWriter sw = File.AppendText("quotes.txt"))

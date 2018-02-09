@@ -18,6 +18,14 @@ namespace MegaDesk_4_JonathanBasham
         public const int MINDEPTH = 12;
         public const int MAXDEPTH = 48;
 
+        struct DeskObject
+        {
+            public int Width;
+            public int Depth;
+            public int numOfDrawers;
+            public string surfMaterial;
+        }
+
         public enum DeskMaterials
         {
             Oak,
