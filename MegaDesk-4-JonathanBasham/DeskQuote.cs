@@ -46,8 +46,10 @@ namespace MegaDesk_4_JonathanBasham
 
             // calculate Surface Area member variable for use in multiple functions
             SurfaceArea = Desk.Width * Desk.Depth;
-        }
 
+
+        }
+        
         public int CalculateQuoteTotal()
         {         
             return PRICE_BASE + SurfaceAreaCost() + DrawerCost() + SurfaceMaterialCost() + GetRushOrder();
@@ -162,7 +164,7 @@ namespace MegaDesk_4_JonathanBasham
                 }
 
             }
-            catch (Exception e) { }
+            catch (Exception ex) { }
             return rushCost; 
         }
 

@@ -12,18 +12,22 @@ namespace MegaDesk_4_JonathanBasham
         public int Depth { get; set; }
         public int numOfDrawers { get; set; }
         public string surfMaterial { get; set; }
-
+       
         public const int MINWIDTH = 24;
         public const int MAXWIDTH = 96;
         public const int MINDEPTH = 12;
         public const int MAXDEPTH = 48;
 
-        struct DeskObject
+        public struct DeskObject
         {
+            public string CurrentDate;
+            public string CustomerName;
             public int Width;
             public int Depth;
             public int numOfDrawers;
             public string surfMaterial;
+            public int RushOrderDays;
+            public int TotalQuote;     
         }
 
         public enum DeskMaterials

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_4_JonathanBasham
 {
@@ -27,6 +23,8 @@ namespace MegaDesk_4_JonathanBasham
         public string SurfaceMaterial;
         public int RushOrderDays;
         public int DeskQuoteTotal;
+        
+        
 
         private void cancelQuoteButton_Click(object sender, EventArgs e)
         {
@@ -48,15 +46,38 @@ namespace MegaDesk_4_JonathanBasham
 
                 DeskQuote newQuoteOrder = new DeskQuote(DeskWidth, DeskDepth, Drawers, SurfaceMaterial, RushOrderDays);
                 DeskQuoteTotal = newQuoteOrder.CalculateQuoteTotal();
-                List<DeskQuote> deskOrders = new List<DeskQuote>();
-                deskOrders.Add(newQuoteOrder);
-               
 
+                Desk.DeskObject deskObject;
+                deskObject.CustomerName = CustomerName;
+                deskObject.Width = DeskWidth;
+                deskObject.Depth = DeskDepth;
+                deskObject.surfMaterial = SurfaceMaterial;
+                deskObject.numOfDrawers = Drawers;
+                deskObject.RushOrderDays = RushOrderDays;
+                deskObject.TotalQuote = DeskQuoteTotal;
+                deskObject.CurrentDate = DateTime.Now.ToString("dd MMM yyyy");
+
+                var deskObjects = new List<Desk.DeskObject>();
+                deskObjects.Add(deskObject);
+                var result = JsonConvert.SerializeObject(deskObject, Formatting.Indented);
+                File.AppendAllText(@"quotes.json", result);
+
+               // if (!File.Exists(@"quotes.json"))
+                //{
+              //      using (StreamWriter sw = File.CreateText("quotes.json"))
+              //      {
+              //          sw.WriteLine("[");
+             //       }
+             //   }
+             //   var stringObject = JsonConvert.SerializeObject(deskObject, Formatting.Indented);
+             //   stringObject = stringObject + ",";
+             //   File.AppendAllText(@"quotes.json", stringObject);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Check input values");
             }
+
 
             #region Display
             var MainMenu = (MainMenu)Tag;
