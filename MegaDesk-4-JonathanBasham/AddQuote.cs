@@ -58,20 +58,19 @@ namespace MegaDesk_4_JonathanBasham
                 deskObject.CurrentDate = DateTime.Now.ToString("dd MMM yyyy");
 
                 var deskObjects = new List<Desk.DeskObject>();
+                var serializer = new JsonSerializer();
+                using (var reader = new StreamReader(@"quotes.json"))
+                using (var jsonReader = new JsonTextReader(reader))
+                {
+                    deskObjects = serializer.Deserialize<List<Desk.DeskObject>>(jsonReader);
+                }
                 deskObjects.Add(deskObject);
-                var result = JsonConvert.SerializeObject(deskObject, Formatting.Indented);
-                File.AppendAllText(@"quotes.json", result);
+                using (var writer = new StreamWriter(@"quotes.json"))
+                using (var jsonWriter = new JsonTextWriter(writer))
+                {
+                     serializer.Serialize(jsonWriter, deskObjects);
+                }
 
-               // if (!File.Exists(@"quotes.json"))
-                //{
-              //      using (StreamWriter sw = File.CreateText("quotes.json"))
-              //      {
-              //          sw.WriteLine("[");
-             //       }
-             //   }
-             //   var stringObject = JsonConvert.SerializeObject(deskObject, Formatting.Indented);
-             //   stringObject = stringObject + ",";
-             //   File.AppendAllText(@"quotes.json", stringObject);
             }
             catch (Exception ex)
             {
