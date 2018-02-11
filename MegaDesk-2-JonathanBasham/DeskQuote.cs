@@ -103,7 +103,7 @@ namespace MegaDesk_4_JonathanBasham
         private int GetRushOrder()
         {
             int rushCost = 0;
-            string path = @"C:\Users\Jonathan.Basham\source\repos\MegaDesk-4-JonathanBasham\MegaDesk-4-JonathanBasham\bin\Debug\rushOrderPrices.txt";
+            string path = @"C:\Users\Jonathan.Basham\source\repos\MegaDesk-2-JonathanBasham\MegaDesk-2-JonathanBasham\bin\Debug\rushOrderPrices.txt";
             try
             {
                 int x = 0;

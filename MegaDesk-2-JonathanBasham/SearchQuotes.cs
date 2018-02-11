@@ -56,7 +56,7 @@ namespace MegaDesk_4_JonathanBasham
 
         }
 
-        private string path = @"C:\Users\Jonathan.Basham\source\repos\MegaDesk-4-JonathanBasham\MegaDesk-4-JonathanBasham\bin\Debug\quotes.txt";
+        private string path = @"C:\Users\Jonathan.Basham\source\repos\MegaDesk-2-JonathanBasham\MegaDesk-2-JonathanBasham\bin\Debug\quotes.txt";
         private string SurfaceMaterial;
         private void cancelSearchQuoteButton_Click(object sender, EventArgs e)
         {

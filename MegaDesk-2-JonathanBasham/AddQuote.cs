@@ -57,6 +57,13 @@ namespace MegaDesk_4_JonathanBasham
                 deskObject.TotalQuote = DeskQuoteTotal;
                 deskObject.CurrentDate = DateTime.Now.ToString("dd MMM yyyy");
 
+                if (!File.Exists(@"quotes.json"))
+                {
+                    using (StreamWriter sw = File.CreateText("quotes.json"))
+                    {
+                        sw.WriteLine("[]");
+                    }
+                }
                 var deskObjects = new List<Desk.DeskObject>();
                 var serializer = new JsonSerializer();
                 using (var reader = new StreamReader(@"quotes.json"))
