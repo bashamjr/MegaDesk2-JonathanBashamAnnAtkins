@@ -38,6 +38,7 @@
             this.surfMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rushOrderDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quoteTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllQuotes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.cancelViewAllQuotesButton.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cancelViewAllQuotesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelViewAllQuotesButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cancelViewAllQuotesButton.Location = new System.Drawing.Point(724, 331);
+            this.cancelViewAllQuotesButton.Location = new System.Drawing.Point(714, 332);
             this.cancelViewAllQuotesButton.Name = "cancelViewAllQuotesButton";
             this.cancelViewAllQuotesButton.Size = new System.Drawing.Size(150, 50);
             this.cancelViewAllQuotesButton.TabIndex = 1;
@@ -70,7 +71,7 @@
             this.quoteTotal});
             this.dgvAllQuotes.Location = new System.Drawing.Point(24, 82);
             this.dgvAllQuotes.Name = "dgvAllQuotes";
-            this.dgvAllQuotes.Size = new System.Drawing.Size(850, 233);
+            this.dgvAllQuotes.Size = new System.Drawing.Size(840, 233);
             this.dgvAllQuotes.TabIndex = 2;
             // 
             // QuoteDate
@@ -113,11 +114,22 @@
             this.quoteTotal.HeaderText = "Quote Total";
             this.quoteTotal.Name = "quoteTotal";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 26);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "View All Quotes";
+            // 
             // ViewAllQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 419);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAllQuotes);
             this.Controls.Add(this.cancelViewAllQuotesButton);
             this.Name = "ViewAllQuotes";
@@ -141,5 +153,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn surfMaterial;
         private System.Windows.Forms.DataGridViewTextBoxColumn rushOrderDays;
         private System.Windows.Forms.DataGridViewTextBoxColumn quoteTotal;
+        private System.Windows.Forms.Label label1;
     }
 }
